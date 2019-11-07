@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "587056239457",
+    "firebase_url": "https://arkusdb.firebaseio.com",
+    "project_id": "arkusdb",
+    "storage_bucket": "arkusdb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:587056239457:android:3d9895d280e8a2a3696b20",
+        "android_client_info": {
+          "package_name": "com.bootcamp.login"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "587056239457-rk1uq1olh27ovsutfh4k84oj8bq4chk6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bootcamp.login",
+            "certificate_hash": "65badcc2d14efab9ccb98b53665813669a117310"
+          }
+        },
+        {
+          "client_id": "587056239457-6eur2ep7biu7a22i44go2o99ukj41tmv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBnYIjE-oKJjYRWNbupk0jTwytvFIc22Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "587056239457-6eur2ep7biu7a22i44go2o99ukj41tmv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
