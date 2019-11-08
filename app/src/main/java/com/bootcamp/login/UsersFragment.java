@@ -27,7 +27,7 @@ public class UsersFragment extends Fragment {
     Button button1, button2, button3,button4;
     TextView textview;
     String [] opc1 = {"Senior", "Mid", "Junior"};
-    String [] opc2 = {"Android", ".Net", "PHP", "Reac-native"};
+    String [] opc2 = {"Android", ".Net", "PHP", "React-native"};
     String [] opc3 = {"PO", "Scrum Master", "Desarrollador", "QA"};
     String [] opc4 = {"Disponibles", "Ocupados"};
 
