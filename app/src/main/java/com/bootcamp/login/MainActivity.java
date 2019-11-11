@@ -83,6 +83,8 @@ public class MainActivity extends AppCompatActivity{
                                     Toast.makeText(MainActivity.this, "No pudo iniciar sesión!", Toast.LENGTH_SHORT).show();
                                 }
                                 else {
+                                   /* progress = ProgressDialog.show(MainActivity.this, "Cargando",
+                                            "Esperese poquito", true);*/
                                     Intent intToHome = new Intent(MainActivity.this, Home.class);
                                     startActivity(intToHome);
                                 }
@@ -93,7 +95,8 @@ public class MainActivity extends AppCompatActivity{
                         Toast.makeText(MainActivity.this, "Ha ocurrido un error!", Toast.LENGTH_SHORT).show();
                     }
                     progress = ProgressDialog.show(MainActivity.this, "Cargando",
-                            "Esperese poquito", true);
+                            "Espere Porfavor", true);
+
                 }
             });
         }

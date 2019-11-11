@@ -194,31 +194,31 @@ public class UsersFragment extends Fragment {
         ModelUsers n = new ModelUsers();
         n.setNombre("Juan Perez");
         n.setDescripcion("Usuario");
-        n.setImg(R.drawable.users);
+        n.setImg(R.drawable.user);
         models.add(n);
 
         n = new ModelUsers();
         n.setNombre("Ulises flores");
         n.setDescripcion("Usuario");
-        n.setImg(R.drawable.users);
+        n.setImg(R.drawable.user);
         models.add(n);
 
         n = new ModelUsers();
         n.setNombre("Saian Ford");
         n.setDescripcion("Usuario");
-        n.setImg(R.drawable.users);
+        n.setImg(R.drawable.user);
         models.add(n);
 
         n = new ModelUsers();
         n.setNombre("Cesar Chavez");
         n.setDescripcion("Usuario");
-        n.setImg(R.drawable.users);
+        n.setImg(R.drawable.user);
         models.add(n);
 
         n = new ModelUsers();
         n.setNombre("Saul Soto");
         n.setDescripcion("Usuario");
-        n.setImg(R.drawable.users);
+        n.setImg(R.drawable.user);
         models.add(n);
 
 
@@ -227,5 +227,12 @@ public class UsersFragment extends Fragment {
 
     private void listuser() {
         // listusers.add(new Listusers("jorge","",R.dra wable.user));
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((Home) getActivity())
+                .setActionBarTitle("Usuarios");
     }
 }
