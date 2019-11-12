@@ -1,9 +1,42 @@
 package com.bootcamp.login.Users;
 
-public class Users {
-    private String name;
+import java.util.ArrayList;
 
-    //metodo toString regresando el valor de nombre
-    @Override
-    public String toString(){return  name;}
+public class Users extends ArrayList<Users> {
+    private String name, technology/*, image*/;
+
+    public Users() {
+        //constructor necesario
+    }
+
+    public Users(int initialCapacity, String name, String technology, String image) {
+        super(initialCapacity);
+        this.name = name;
+        this.technology = technology;
+        /*this.image=image;*/
+    }
+
+/*    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }*/
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getTechnology() {
+        return technology;
+    }
+
+    public void setTechnology(String technology) {
+        this.technology = technology;
+    }
 }

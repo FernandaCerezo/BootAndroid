@@ -1,5 +1,6 @@
 package com.bootcamp.login;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,52 +8,38 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bootcamp.login.Users.Users;
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
+import java.util.List;
 
-public class AdapterUsers extends RecyclerView.Adapter<HolderUsers> {
+public class AdapterUsers extends RecyclerView.Adapter<Holder> {
 
-    UsersFragment c;
-    // Este array list crea una lista en el array lu cual define nuestros parametros en nuestra clase model
-    ArrayList<ModelUsers> models;
+    Context context;
+    ArrayList<Users> Users;
 
-    public AdapterUsers(UsersFragment c, ArrayList<ModelUsers> models) {
-        this.c = c;
-        this.models = models;
+    public AdapterUsers(Context context, ArrayList<Users> users) {
+        this.context = context;
+        Users = users;
     }
-
 
     @NonNull
     @Override
-    public HolderUsers onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.fragment_users, null);
-        return new HolderUsers(view);
+    public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_users,null);
+        return new Holder(view);
     }
-
 
     @Override
-    public void onBindViewHolder(@NonNull HolderUsers holder, int i) {
-
-        holder.mT.setText(models.get(i).getNombre());
-        holder.mD.setText(models.get(i).getDescripcion());
-        holder.Imv.setImageResource(models.get(i).getImg());
-
-        holder.setItemClick(new ItemClick() {
-            @Override
-            public void onItemClickListener(View v, int position) {
-
-            }
-        });
-
-
+    public void onBindViewHolder(@NonNull Holder holder, int position) {
+        holder.mName.setText(Users.get(position).getName());
+        holder.mTechnology.setText(Users.get(position).getTechnology());
+       /* Picasso.get().load(Users.get(position).getImage()).into(holder.mImagenView);*/
     }
 
-    /**
-     * Returns the total number of items in the data set held by the adapter.
-     *
-     * @return The total number of items in this adapter.
-     */
     @Override
     public int getItemCount() {
-        return models.size();
+        return Users.size();
     }
 }

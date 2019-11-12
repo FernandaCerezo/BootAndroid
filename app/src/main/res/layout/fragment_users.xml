@@ -22,7 +22,7 @@
             android:src="@drawable/user"/>
 
         <TextView
-            android:id="@+id/TextV"
+            android:id="@+id/Textname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Nombre"
@@ -35,7 +35,7 @@
             android:layout_marginStart="10dp"
             />
         <TextView
-            android:id="@+id/TextV2"
+            android:id="@+id/Textdescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Descripcion"
@@ -46,7 +46,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:layout_below="@id/TextV"/>
+            android:layout_below="@id/Textname"/>
 
 
 
