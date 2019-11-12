@@ -35,7 +35,7 @@ public class AdapterUsers extends RecyclerView.Adapter<Holder> {
     public void onBindViewHolder(@NonNull Holder holder, int position) {
         holder.mName.setText(Users.get(position).getName());
         holder.mTechnology.setText(Users.get(position).getTechnology());
-       /* Picasso.get().load(Users.get(position).getImage()).into(holder.mImagenView);*/
+        Picasso.get().load(Users.get(position).getImage()).into(holder.mImagenView);
     }
 
     @Override

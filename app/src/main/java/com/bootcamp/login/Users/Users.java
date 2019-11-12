@@ -3,7 +3,7 @@ package com.bootcamp.login.Users;
 import java.util.ArrayList;
 
 public class Users extends ArrayList<Users> {
-    private String name, technology/*, image*/;
+    private String name, technology, image;
 
     public Users() {
         //constructor necesario
@@ -13,16 +13,16 @@ public class Users extends ArrayList<Users> {
         super(initialCapacity);
         this.name = name;
         this.technology = technology;
-        /*this.image=image;*/
+        this.image=image;
     }
 
-/*    public String getImage() {
+    public String getImage() {
         return image;
     }
 
     public void setImage(String image) {
         this.image = image;
-    }*/
+    }
 
     public String getName() {
         return name;
