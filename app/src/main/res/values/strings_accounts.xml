@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Counts">Cuentas</string>
+    <string name="Search">Buscar</string>
+    <string name="GoTo">Ir a perfil de la cuenta</string>
+</resources>
