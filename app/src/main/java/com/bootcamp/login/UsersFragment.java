@@ -51,7 +51,6 @@ public class UsersFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_listusers, container,false);
-
         mFirebaseDB=FirebaseDatabase.getInstance().getReference().child("user");
         final EditText ET = (EditText) root.findViewById(R.id.search_section);
         ET.addTextChangedListener(new TextWatcher() {
@@ -114,5 +113,10 @@ public class UsersFragment extends Fragment {
 
             }
         });
+    }
+    @Override
+    public void onResume(){
+        super.onResume();
+        ((Home) getActivity()).setActionBarTitle("Usuarios");
     }
 }
