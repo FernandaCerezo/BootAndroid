@@ -4,14 +4,16 @@ public class Accounts
 {
     private String Name;
     private String Description;
+    private String Technology;
     private int Image;
 
     //Constructor
     public Accounts(){}
-    public Accounts(String Name, String Description, int Image)
+    public Accounts(String Name, String Description, String Technology, int Image)
     {
         this.Name = Name;
         this.Description = Description;
+        this.Technology = Technology;
         this.Image = Image;
     }
 
@@ -33,6 +35,13 @@ public class Accounts
     public void setDescription(String Description)
     {
         this.Description = Description;
+    }
+
+    //Tecnologia
+    public String getTechnology() { return Technology; }
+    public void setTechnology(String Technology)
+    {
+        this.Technology = Technology;
     }
 
     //Imagenes

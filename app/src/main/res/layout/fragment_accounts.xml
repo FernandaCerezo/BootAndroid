@@ -36,6 +36,7 @@
                 android:layout_marginBottom="15dp">
 
                 <ImageView
+                    android:id="@+id/Filter_Search"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_margin="10dp"
@@ -61,7 +62,7 @@
 
             <!-- ListView de todas las cuentas encontradas -->
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/countRecyclerView"
+                android:id="@+id/Accounts_RecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 
