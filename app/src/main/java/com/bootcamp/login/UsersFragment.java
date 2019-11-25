@@ -413,7 +413,7 @@ public class UsersFragment extends Fragment {
                                 });
                                 break;
                             case "Desarrollador":
-                                mFirebaseDB.orderByChild("Rol").equalTo("Dev").addValueEventListener(new ValueEventListener() {
+                                mFirebaseDB.orderByChild("Rol").equalTo("Developer").addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                         users.clear();
