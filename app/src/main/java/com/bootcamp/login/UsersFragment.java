@@ -1,13 +1,17 @@
 package com.bootcamp.login;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,15 +32,20 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class UsersFragment extends Fragment {
-
     private RecyclerView mRecycleV;
     private String search = "";
     AdapterUsers mAdapterU;
     ArrayList<Users> users = new ArrayList<Users>();
     private DatabaseReference mFirebaseDB;
     ProgressDialog progress;
+    Button button1, button2, button3,button4;
+    String [] opc1 = {"Senior", "Mid", "Junior"};
+    String [] opc2 = {"Android", ".Net", "PHP", "React-native", "IOS"};
+    String [] opc3 = {"PO", "Scrum Master", "Desarrollador", "QA"};
+    String [] opc4 = {"Disponibles", "Ocupados"};
 
     @Override
     public void onStart() {
@@ -71,6 +80,432 @@ public class UsersFragment extends Fragment {
 
         mRecycleV=root.findViewById(R.id.RecyclerV);
         mRecycleV.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        button1 = root.findViewById(R.id.button1);
+        button2 = root.findViewById(R.id.button2);
+        button3 = root.findViewById(R.id.button3);
+        button4 = root.findViewById(R.id.button4);
+
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder alertdialogbuilder = new AlertDialog.Builder(getContext());
+
+
+                alertdialogbuilder.setTitle("Nivel");
+
+                alertdialogbuilder.setItems(opc1, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String selectedText = Arrays.asList(opc1).get(which);
+
+                        switch (selectedText) {
+                            case "Senior":
+                                mFirebaseDB.orderByChild("Grade").equalTo("Sr").addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        users.clear();
+                                        ArrayList<String> keys = new ArrayList<>();
+
+                                        for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren())
+                                        {
+                                            keys.add(dataSnapshot1.getKey());
+                                            Users u = dataSnapshot1.getValue(Users.class);
+                                            users.add(u);
+                                        }
+                                        mAdapterU=new AdapterUsers(getContext(),users, keys);
+                                        mRecycleV.setAdapter(mAdapterU);
+                                        //cerrar carga
+                                        progress.dismiss();
+                                        return;
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+                                break;
+
+                            case "Mid":
+                                mFirebaseDB.orderByChild("Grade").equalTo("Mid").addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        users.clear();
+                                        ArrayList<String> keys = new ArrayList<>();
+
+                                        for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren())
+                                        {
+                                            keys.add(dataSnapshot1.getKey());
+                                            Users u = dataSnapshot1.getValue(Users.class);
+                                            users.add(u);
+                                        }
+                                        mAdapterU=new AdapterUsers(getContext(),users, keys);
+                                        mRecycleV.setAdapter(mAdapterU);
+                                        //cerrar carga
+                                        progress.dismiss();
+                                        return;
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+                                break;
+
+                            case "Junior":
+                                mFirebaseDB.orderByChild("Grade").equalTo("Jr").addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        users.clear();
+                                        ArrayList<String> keys = new ArrayList<>();
+
+                                        for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren())
+                                        {
+                                            keys.add(dataSnapshot1.getKey());
+                                            Users u = dataSnapshot1.getValue(Users.class);
+                                            users.add(u);
+                                        }
+                                        mAdapterU=new AdapterUsers(getContext(),users, keys);
+                                        mRecycleV.setAdapter(mAdapterU);
+                                        //cerrar carga
+                                        progress.dismiss();
+                                        return;
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+                                break;
+                        }
+                    }
+                });
+
+                AlertDialog dialog = alertdialogbuilder.create();
+
+                dialog.show();
+            }
+        });
+
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder alertdialogbuilder = new AlertDialog.Builder(getContext());
+
+
+                alertdialogbuilder.setTitle("Tecnologias");
+
+                alertdialogbuilder.setItems(opc2, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String selectedText = Arrays.asList(opc2).get(which);
+
+                        switch (selectedText) {
+                            case "Android":
+                                mFirebaseDB.orderByChild("technology").equalTo("Android").addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        users.clear();
+                                        ArrayList<String> keys = new ArrayList<>();
+
+                                        for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren())
+                                        {
+                                            keys.add(dataSnapshot1.getKey());
+                                            Users u = dataSnapshot1.getValue(Users.class);
+                                            users.add(u);
+                                        }
+                                        mAdapterU=new AdapterUsers(getContext(),users, keys);
+                                        mRecycleV.setAdapter(mAdapterU);
+                                        //cerrar carga
+                                        progress.dismiss();
+                                        return;
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+                                break;
+                            case ".Net":
+                                mFirebaseDB.orderByChild("technology").equalTo(".NET").addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        users.clear();
+                                        ArrayList<String> keys = new ArrayList<>();
+
+                                        for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren())
+                                        {
+                                            keys.add(dataSnapshot1.getKey());
+                                            Users u = dataSnapshot1.getValue(Users.class);
+                                            users.add(u);
+                                        }
+                                        mAdapterU=new AdapterUsers(getContext(),users, keys);
+                                        mRecycleV.setAdapter(mAdapterU);
+                                        //cerrar carga
+                                        progress.dismiss();
+                                        return;
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+                                break;
+                            case "PHP":
+                                mFirebaseDB.orderByChild("technology").equalTo("PHP").addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        users.clear();
+                                        ArrayList<String> keys = new ArrayList<>();
+
+                                        for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren())
+                                        {
+                                            keys.add(dataSnapshot1.getKey());
+                                            Users u = dataSnapshot1.getValue(Users.class);
+                                            users.add(u);
+                                        }
+                                        mAdapterU=new AdapterUsers(getContext(),users, keys);
+                                        mRecycleV.setAdapter(mAdapterU);
+                                        //cerrar carga
+                                        progress.dismiss();
+                                        return;
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+                                break;
+                            case "IOS":
+                                mFirebaseDB.orderByChild("technology").equalTo("IOS").addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        users.clear();
+                                        ArrayList<String> keys = new ArrayList<>();
+
+                                        for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                                            keys.add(dataSnapshot1.getKey());
+                                            Users u = dataSnapshot1.getValue(Users.class);
+                                            users.add(u);
+                                        }
+                                        mAdapterU = new AdapterUsers(getContext(), users, keys);
+                                        mRecycleV.setAdapter(mAdapterU);
+                                        //cerrar carga
+                                        progress.dismiss();
+                                        return;
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+                                    break;
+                            case "React-native":
+                                mFirebaseDB.orderByChild("technology").equalTo("React").addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        users.clear();
+                                        ArrayList<String> keys = new ArrayList<>();
+
+                                        for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren())
+                                        {
+                                            keys.add(dataSnapshot1.getKey());
+                                            Users u = dataSnapshot1.getValue(Users.class);
+                                            users.add(u);
+                                        }
+                                        mAdapterU=new AdapterUsers(getContext(),users, keys);
+                                        mRecycleV.setAdapter(mAdapterU);
+                                        //cerrar carga
+                                        progress.dismiss();
+                                        return;
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+                                break;
+                        }
+                    }
+                });
+
+                AlertDialog dialog = alertdialogbuilder.create();
+
+                dialog.show();
+            }
+        });
+
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder alertdialogbuilder = new AlertDialog.Builder(getContext());
+
+
+                alertdialogbuilder.setTitle("Rol");
+
+                alertdialogbuilder.setItems(opc3, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String selectedText = Arrays.asList(opc3).get(which);
+
+                        switch (selectedText) {
+                            case "PO":
+                                mFirebaseDB.orderByChild("Rol").equalTo("PO").addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        users.clear();
+                                        ArrayList<String> keys = new ArrayList<>();
+
+                                        for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren())
+                                        {
+                                            keys.add(dataSnapshot1.getKey());
+                                            Users u = dataSnapshot1.getValue(Users.class);
+                                            users.add(u);
+                                        }
+                                        mAdapterU=new AdapterUsers(getContext(),users, keys);
+                                        mRecycleV.setAdapter(mAdapterU);
+                                        //cerrar carga
+                                        progress.dismiss();
+                                        return;
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+                                break;
+                            case "Scrum Master":
+                                mFirebaseDB.orderByChild("Rol").equalTo("Scrum Master").addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        users.clear();
+                                        ArrayList<String> keys = new ArrayList<>();
+
+                                        for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren())
+                                        {
+                                            keys.add(dataSnapshot1.getKey());
+                                            Users u = dataSnapshot1.getValue(Users.class);
+                                            users.add(u);
+                                        }
+                                        mAdapterU=new AdapterUsers(getContext(),users, keys);
+                                        mRecycleV.setAdapter(mAdapterU);
+                                        //cerrar carga
+                                        progress.dismiss();
+                                        return;
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+                                break;
+                            case "Desarrollador":
+                                mFirebaseDB.orderByChild("Rol").equalTo("Dev").addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        users.clear();
+                                        ArrayList<String> keys = new ArrayList<>();
+
+                                        for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren())
+                                        {
+                                            keys.add(dataSnapshot1.getKey());
+                                            Users u = dataSnapshot1.getValue(Users.class);
+                                            users.add(u);
+                                        }
+                                        mAdapterU=new AdapterUsers(getContext(),users, keys);
+                                        mRecycleV.setAdapter(mAdapterU);
+                                        //cerrar carga
+                                        progress.dismiss();
+                                        return;
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+                                break;
+                            case "QA":
+                                mFirebaseDB.orderByChild("Rol").equalTo("QA").addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        users.clear();
+                                        ArrayList<String> keys = new ArrayList<>();
+
+                                        for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren())
+                                        {
+                                            keys.add(dataSnapshot1.getKey());
+                                            Users u = dataSnapshot1.getValue(Users.class);
+                                            users.add(u);
+                                        }
+                                        mAdapterU=new AdapterUsers(getContext(),users, keys);
+                                        mRecycleV.setAdapter(mAdapterU);
+                                        //cerrar carga
+                                        progress.dismiss();
+                                        return;
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+                                break;
+                        }
+
+                    }
+                });
+
+                AlertDialog dialog = alertdialogbuilder.create();
+
+                dialog.show();
+            }
+        });
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder alertdialogbuilder = new AlertDialog.Builder(getContext());
+
+
+                alertdialogbuilder.setTitle("Estatus");
+
+                alertdialogbuilder.setItems(opc4, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String selectedText = Arrays.asList(opc4).get(which);
+
+                        switch (selectedText) {
+                            case "Disponibles":
+                                Toast.makeText(getContext(),"Disponibles",Toast.LENGTH_SHORT).show();
+                                break;
+
+                            case "Ocupados":
+                                Toast.makeText(getContext(),"Ocupados",Toast.LENGTH_SHORT).show();
+                                break;
+                        }
+
+                    }
+                });
+
+                AlertDialog dialog = alertdialogbuilder.create();
+
+                dialog.show();
+            }
+        });
         return root;
     }
 
