@@ -15,9 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bootcamp.login.Accounts.Accounts;
-import com.bootcamp.login.Accounts.MyAdapter;
+import com.bootcamp.login.Accounts.AdapterAccounts;
 import com.bootcamp.login.Accounts.SAccounts;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,43 +24,39 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class AccountsFragment extends Fragment {
 
     //Variables globales
+    private DatabaseReference databaseReference;
     private ArrayList<Accounts> AccountsList;
     private RecyclerView AccountsRecycler;
-    String search = "";
-    private View v;
-
-    //Variables de Firebase
-    private DatabaseReference databaseReference;
-    private FirebaseDatabase firebaseDatabase;
+    private String search = "";
 
     //Constructor
     public AccountsFragment() { }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        //Inicializar el RecyclerView
-        v = inflater.inflate(R.layout.fragment_accounts, container, false);
-        AccountsList = new ArrayList<Accounts>();
-        AccountsRecycler = v.findViewById(R.id.countRecyclerView);
+
+        //Inicializar el RecyclerView de las cuentas
+        View viewAccounts;
+        viewAccounts = inflater.inflate(R.layout.fragment_accounts, container, false);
+        AccountsList = new ArrayList<>();
+        AccountsRecycler = viewAccounts.findViewById(R.id.AccountRecyclerView);
         AccountsRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
 
         //Crear barra de busqueda y metodo por cada cambio
-        final EditText ET = (EditText) v.findViewById(R.id.search_section);
+        final EditText ET = viewAccounts.findViewById(R.id.search_section);
         ET.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 search = ET.getText().toString();
                 listData(search);
             }
-
             @Override
             public void afterTextChanged(Editable s) { }
         });
@@ -69,71 +64,59 @@ public class AccountsFragment extends Fragment {
         //Inicia la base de datos y consulta
         initializeFirebase();
         listData(search);
-        return v;
+        return viewAccounts;
     }
 
     //Metodo para consultar datos
-    private void listData(final String search)
-    {
-        databaseReference.child("Accounts").addValueEventListener(new ValueEventListener()
-        {
+    private void listData(final String search) {
+        databaseReference.child("Accounts").addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
-            {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
                 //Limpieza
                 AccountsList.clear();
                 SAccounts account;
-
                 //Si esta vacio
-                if (search.equals(""))
-                {
-                    //Por cada objeto
-                    for (DataSnapshot objSnapShop :dataSnapshot.getChildren())
-                    {
-                        account = objSnapShop.getValue(SAccounts.class);
-                        AccountsList.add(new Accounts(account.getName(),account.getDescription(),R.drawable.arkus));
-                    }
+                if (search.equals("")) {
 
-                    //Adaptador para desplegar datos
-                    MyAdapter adapter = new MyAdapter(AccountsList);
-                    AccountsRecycler.setAdapter(adapter);
+                    //Por cada objeto
+                    for (DataSnapshot objSnapShop :dataSnapshot.getChildren()) {
+                        account = objSnapShop.getValue(SAccounts.class);
+                        Objects.requireNonNull(account).setName(objSnapShop.getKey());
+                        AccountsList.add(new Accounts(Objects.requireNonNull(account).getName(),
+                                account.getDescription(),account.getTechnology(), R.drawable.arkus));
+                    }
+                    SetCustomAdapter();
                     return;
                 }
 
                 //Si no esta vacio
-                for (DataSnapshot objSnapShop :dataSnapshot.getChildren())
-                {
+                for (DataSnapshot objSnapShop :dataSnapshot.getChildren()) {
                     account = objSnapShop.getValue(SAccounts.class);
-                    if (account.getName().toLowerCase().contains(search.toLowerCase()))
-                    {
-                        AccountsList.add(new Accounts(account.getName(),account.getDescription(),R.drawable.arkus));
+                    Objects.requireNonNull(account).setName(objSnapShop.getKey());
+                    if (Objects.requireNonNull(account).getName().toLowerCase().contains(search.toLowerCase())) {
+                        AccountsList.add(new Accounts(Objects.requireNonNull(account).getName(),
+                                account.getDescription(),account.getTechnology(), R.drawable.arkus));
                     }
                 }
-
-                //Adaptador para desplegar datos
-                MyAdapter adapter = new MyAdapter(AccountsList);
-                AccountsRecycler.setAdapter(adapter);
-
+                SetCustomAdapter();
             }
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError)
-            {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
                 System.out.println("The read failed: " + databaseError.getCode());
             }
         });
     }
 
     //Conexión a la base de datos
-    private void initializeFirebase()
-    {
-        FirebaseApp.initializeApp(getContext());
-        firebaseDatabase=FirebaseDatabase.getInstance();
+    private void initializeFirebase() {
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference=firebaseDatabase.getReference();
     }
 
-    @Override
-    public void onResume(){
-        super.onResume();
-        ((Home) getActivity()).setActionBarTitle("Cuentas");
+    //Establecer adaptador
+    private void SetCustomAdapter() {
+        AdapterAccounts adapter = new AdapterAccounts(AccountsList, getContext());
+        AccountsRecycler.setAdapter(adapter);
     }
 }

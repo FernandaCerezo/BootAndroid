@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bootcamp.login.R;
-import com.bootcamp.login.Users.Users;
 
 import java.util.ArrayList;
 

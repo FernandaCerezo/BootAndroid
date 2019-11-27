@@ -47,7 +47,7 @@
 
             <!-- ListView de todas las cuentas encontradas -->
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/countRecyclerView"
+                android:id="@+id/AccountRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 

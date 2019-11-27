@@ -12,6 +12,7 @@
         <activity android:name=".UserProfile"
             android:screenOrientation="portrait"
             ></activity>
+        <activity android:name=".AccountProfile"></activity>
         <activity
             android:screenOrientation="portrait"
             android:name=".Home"

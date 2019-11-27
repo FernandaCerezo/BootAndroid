@@ -4,6 +4,7 @@ public class SAccounts
 {
     private String Name;
     private String Description;
+    private String Technology;
 
     //Nombre
     public String getName()
@@ -23,5 +24,12 @@ public class SAccounts
     public void setDescription(String Description)
     {
         this.Description = Description;
+    }
+
+    //Tecnologia
+    public String getTechnology() { return Technology; }
+    public void setTechnology(String Technology)
+    {
+        this.Technology = Technology;
     }
 }
