@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bootcamp.login.Accounts.Accounts;
 import com.bootcamp.login.Accounts.AdapterAccounts;
-import com.bootcamp.login.Accounts.SAccounts;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -75,16 +74,15 @@ public class AccountsFragment extends Fragment {
 
                 //Limpieza
                 AccountsList.clear();
-                SAccounts account;
+                Accounts account;
                 //Si esta vacio
                 if (search.equals("")) {
 
                     //Por cada objeto
                     for (DataSnapshot objSnapShop :dataSnapshot.getChildren()) {
-                        account = objSnapShop.getValue(SAccounts.class);
+                        account = objSnapShop.getValue(Accounts.class);
                         Objects.requireNonNull(account).setName(objSnapShop.getKey());
-                        AccountsList.add(new Accounts(Objects.requireNonNull(account).getName(),
-                                account.getDescription(),account.getTechnology(),R.drawable.arkus));
+                        AccountsList.add(account);
                     }
                     SetCustomAdapter();
                     return;
@@ -92,11 +90,10 @@ public class AccountsFragment extends Fragment {
 
                 //Si no esta vacio
                 for (DataSnapshot objSnapShop :dataSnapshot.getChildren()) {
-                    account = objSnapShop.getValue(SAccounts.class);
+                    account = objSnapShop.getValue(Accounts.class);
                     Objects.requireNonNull(account).setName(objSnapShop.getKey());
                     if (Objects.requireNonNull(account).getName().toLowerCase().contains(search.toLowerCase())) {
-                        AccountsList.add(new Accounts(Objects.requireNonNull(account).getName(),
-                                account.getDescription(),account.getTechnology(),R.drawable.arkus));
+                        AccountsList.add(account);
                     }
                 }
                 SetCustomAdapter();
