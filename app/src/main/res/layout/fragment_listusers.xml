@@ -16,7 +16,7 @@
         <LinearLayout
             android:id="@+id/layout2"
             android:layout_width="match_parent"
-            android:layout_height="94dp"
+            android:layout_height="wrap_content"
             android:background="@color/colorPrimaryDark"
             android:orientation="vertical">
 
@@ -27,77 +27,70 @@
                 android:layout_below="@+id/layout3"
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginBottom="16dp"
-                android:background="@color/Base"
+                android:paddingTop="8dp"
                 android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_margin="10dp"
-                    android:src="@drawable/glass"
-                    android:contentDescription="@string/Search" />
 
                 <EditText
                     android:id="@+id/search_section"
                     android:layout_width="match_parent"
+                    android:background="@drawable/search_style"
                     android:layout_height="wrap_content"
                     android:text=""
+                    android:drawableLeft="@drawable/ic_search_black_24dp"
                     android:textSize="20sp"/>
+            </LinearLayout>
+            <!-- Layout menu de Nivel, Tecnologias, rol, -->
+            <LinearLayout
+                android:id="@+id/layout5"
+                android:layout_width="wrap_content"
+                android:layout_height="65dp"
+                android:orientation="horizontal"
+                android:layout_below="@+id/layout4"
+                android:paddingTop="8dp">
+
+                <Button
+                    android:id="@+id/button1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginHorizontal="6dp"
+                    android:background="@drawable/button_design_lin"
+                    android:fontFamily="@font/lato"
+                    android:text="Nivel" />
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/button_design_lin"
+                    android:fontFamily="@font/lato"
+                    android:text="  Tecnologias  " />
+
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginHorizontal="8dp"
+                    android:background="@drawable/button_design_lin"
+                    android:fontFamily="@font/lato"
+                    android:text="Rol" />
+
+                <Button
+                    android:id="@+id/button4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginHorizontal="3dp"
+                    android:background="@drawable/button_design_lin"
+                    android:fontFamily="@font/lato"
+                    android:text="Estatus" />
 
             </LinearLayout>
-        </LinearLayout>
-
-
-
-        <!-- Layout menu de Nivel, Tecnologias, rol, -->
-        <LinearLayout
-            android:id="@+id/layout5"
-            android:layout_width="380dp"
-            android:layout_height="65dp"
-            android:orientation="horizontal"
-            android:layout_below="@+id/layout4">
-
-            <Button
-                android:id="@+id/button1"
-                android:layout_width="78dp"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:text="Nivel" />
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:text="Tecnologias" />
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="75dp"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:text="Rol" />
-            <Button
-                android:id="@+id/button4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:text="Estatus" />
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/button1"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="72dp"
-                android:text="Selected Text"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
-
-
-
-
         </LinearLayout>
 
         <LinearLayout
@@ -111,10 +104,6 @@
             </view>
 
         </LinearLayout>
-
-
-
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/RecyclerV"
             android:layout_width="match_parent"

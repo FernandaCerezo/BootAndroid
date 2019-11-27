@@ -130,4 +130,10 @@ public class AccountsFragment extends Fragment {
         firebaseDatabase=FirebaseDatabase.getInstance();
         databaseReference=firebaseDatabase.getReference();
     }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        ((Home) getActivity()).setActionBarTitle("Cuentas");
+    }
 }

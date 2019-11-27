@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UserProfile">
-
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,7 +17,7 @@
         <LinearLayout
             android:id="@+id/layout2"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="180dp"
             android:background="@color/colorPrimaryDark"
             android:orientation="vertical">
 
@@ -34,10 +36,11 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/info"
             android:layout_width="match_parent"
-            android:layout_height="280dp"
+            android:layout_height="220dp"
             android:layout_below="@+id/layout2"
-            android:layout_marginTop="-2dp"
+            android:layout_marginTop="2dp"
             android:orientation="vertical">
 
             <TextView
@@ -56,7 +59,7 @@
                 android:layout_marginTop="8dp"
                 android:text="TextView"
                 android:textColor="#000011"
-                android:textSize="25sp"/>
+                android:textSize="20sp"/>
 
             <TextView
                 android:id="@+id/txtGrade"
@@ -65,7 +68,7 @@
                 android:layout_marginTop="8dp"
                 android:text="TextView"
                 android:textColor="#000011"
-                android:textSize="25sp"/>
+                android:textSize="20sp"/>
 
             <TextView
                 android:id="@+id/txtTech"
@@ -74,7 +77,7 @@
                 android:layout_marginTop="8dp"
                 android:text="TextView"
                 android:textColor="#000011"
-                android:textSize="25sp"/>
+                android:textSize="20sp"/>
 
             <TextView
                 android:id="@+id/txtEspecTech"
@@ -83,7 +86,7 @@
                 android:layout_marginTop="8dp"
                 android:text="TextView"
                 android:textColor="#000011"
-                android:textSize="25sp"/>
+                android:textSize="20sp"/>
 
         </LinearLayout>
 
@@ -92,6 +95,7 @@
             android:layout_height="285dp"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="0dp"
+            android:layout_below="@+id/info"
             android:orientation="vertical">
 
             <TextView
@@ -111,7 +115,7 @@
                 android:layout_marginTop="8dp"
                 android:text="TextView"
                 android:textColor="#000011"
-                android:textSize="25sp"/>
+                android:textSize="20sp"/>
 
             <TextView
                 android:id="@+id/txtStartDate"
@@ -120,7 +124,7 @@
                 android:layout_marginTop="8dp"
                 android:text="TextView"
                 android:textColor="#000011"
-                android:textSize="25sp"/>
+                android:textSize="20sp"/>
 
             <TextView
                 android:id="@+id/txtEndDate"
@@ -129,9 +133,10 @@
                 android:layout_marginTop="8dp"
                 android:text="TextView"
                 android:textColor="#000011"
-                android:textSize="25sp"/>
+                android:textSize="20sp"/>
         </LinearLayout>
 
     </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </FrameLayout>

@@ -25,28 +25,30 @@
             android:id="@+id/Textname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nombre"
-            android:textSize="22sp"
-            android:textColor="#000"
-            android:textStyle="bold"
-            android:layout_toRightOf="@id/imageUser"
-            android:layout_toEndOf="@id/imageUser"
-            android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
-            />
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@id/imageUser"
+            android:layout_toRightOf="@id/imageUser"
+            android:fontFamily="@font/lato"
+            android:text="Nombre"
+            android:textColor="#000"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/txtEspecTech"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Descripcion"
-            android:textSize="18sp"
-            android:textColor="#a9a9a9"
-            android:layout_toRightOf="@id/imageUser"
-            android:layout_toEndOf="@id/imageUser"
-            android:layout_marginLeft="10dp"
+            android:layout_below="@id/Textname"
             android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:layout_below="@id/Textname"/>
+            android:layout_toEndOf="@id/imageUser"
+            android:layout_toRightOf="@id/imageUser"
+            android:fontFamily="@font/lato"
+            android:text="Descripcion"
+            android:textColor="#a9a9a9"
+            android:textSize="18sp" />
 
 
 

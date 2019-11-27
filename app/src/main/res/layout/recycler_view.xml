@@ -21,19 +21,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
+            android:fontFamily="@font/lato"
             android:text="@string/Counts"
+            android:textColor="@color/Head"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@color/Head"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/account_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
+            android:fontFamily="@font/lato"
             android:text=""
-            android:textSize="14sp"
-            android:textColor="@color/Head"/>
+            android:textColor="@color/Head"
+            android:textSize="14sp" />
 
     </LinearLayout>
 
