@@ -17,7 +17,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bootcamp.login.Accounts.Accounts;
 import com.bootcamp.login.Accounts.AdapterAccounts;
 import com.bootcamp.login.Accounts.SAccounts;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,10 +31,8 @@ public class AccountsFragment extends Fragment {
     //Variables globales
     private DatabaseReference databaseReference;
     private ArrayList<Accounts> AccountsList;
-    private ArrayList<String> FilterList;
     private RecyclerView AccountsRecycler;
     private String search = "";
-    AdapterAccounts adapter;
 
     //Constructor
     public AccountsFragment() { }
@@ -43,15 +40,15 @@ public class AccountsFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        //Inicializar el RecyclerView
+        //Inicializar el RecyclerView de las cuentas
         View viewAccounts;
         viewAccounts = inflater.inflate(R.layout.fragment_accounts, container, false);
-        AccountsList = new ArrayList<Accounts>();
+        AccountsList = new ArrayList<>();
         AccountsRecycler = viewAccounts.findViewById(R.id.Accounts_RecyclerView);
         AccountsRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
 
         //Crear barra de busqueda y metodo por cada cambio
-        final EditText ET = (EditText) viewAccounts.findViewById(R.id.search_section);
+        final EditText ET = viewAccounts.findViewById(R.id.search_section);
         ET.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
@@ -85,6 +82,7 @@ public class AccountsFragment extends Fragment {
                     //Por cada objeto
                     for (DataSnapshot objSnapShop :dataSnapshot.getChildren()) {
                         account = objSnapShop.getValue(SAccounts.class);
+                        Objects.requireNonNull(account).setName(objSnapShop.getKey());
                         AccountsList.add(new Accounts(Objects.requireNonNull(account).getName(),
                                 account.getDescription(),account.getTechnology(),R.drawable.arkus));
                     }
@@ -95,6 +93,7 @@ public class AccountsFragment extends Fragment {
                 //Si no esta vacio
                 for (DataSnapshot objSnapShop :dataSnapshot.getChildren()) {
                     account = objSnapShop.getValue(SAccounts.class);
+                    Objects.requireNonNull(account).setName(objSnapShop.getKey());
                     if (Objects.requireNonNull(account).getName().toLowerCase().contains(search.toLowerCase())) {
                         AccountsList.add(new Accounts(Objects.requireNonNull(account).getName(),
                                 account.getDescription(),account.getTechnology(),R.drawable.arkus));
@@ -111,15 +110,13 @@ public class AccountsFragment extends Fragment {
 
     //Conexión a la base de datos
     private void initializeFirebase() {
-        FirebaseDatabase firebaseDatabase;
-        FirebaseApp.initializeApp(Objects.requireNonNull(getContext()));
-        firebaseDatabase=FirebaseDatabase.getInstance();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference=firebaseDatabase.getReference();
     }
 
     //Establecer adaptador
     private void SetCustomAdapter() {
-        adapter = new AdapterAccounts(AccountsList, getContext());
+        AdapterAccounts adapter = new AdapterAccounts(AccountsList, getContext());
         AccountsRecycler.setAdapter(adapter);
     }
 }

@@ -41,7 +41,7 @@
                     android:layout_height="30dp"
                     android:layout_margin="10dp"
                     android:src="@drawable/glass"
-                    android:contentDescription="@string/Search" />
+                    android:contentDescription="@string/Search"/>
 
                 <EditText
                     android:id="@+id/search_section"
