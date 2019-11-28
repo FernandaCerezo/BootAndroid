@@ -4,28 +4,37 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridLayout;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
 
     /*private EditText emailId,password;
     private Button btnLogin;*/
 
     //Declarando variables miembro
     EditText emailId, password;
+    TextView mRecoverPass;
     Button SignInBtn;
     FirebaseAuth mFirebaseAuth;
     FirebaseAuth.AuthStateListener mAuthStateListener;
@@ -43,6 +52,7 @@ public class MainActivity extends AppCompatActivity{
             emailId = findViewById(R.id.email);
             password = findViewById(R.id.password);
             SignInBtn = findViewById(R.id.access);
+            mRecoverPass=findViewById(R.id.recover_pass);
 
             mAuthStateListener = new FirebaseAuth.AuthStateListener() {
                 @Override
@@ -84,6 +94,7 @@ public class MainActivity extends AppCompatActivity{
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(!task.isSuccessful()){
                                     Toast.makeText(MainActivity.this, "No pudo iniciar sesión!", Toast.LENGTH_SHORT).show();
+                                    progress.dismiss();
                                 }
                                 else {
 
@@ -98,8 +109,9 @@ public class MainActivity extends AppCompatActivity{
                     }
                 }
             });
-        }
-        @Override
+    }
+
+    @Override
         public void onStart() {
             super.onStart();
             mFirebaseAuth.addAuthStateListener(mAuthStateListener);
