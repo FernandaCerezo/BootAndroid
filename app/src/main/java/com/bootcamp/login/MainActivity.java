@@ -8,6 +8,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.midi.MidiDeviceService;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
@@ -109,6 +110,14 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             });
+
+            mRecoverPass.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    openDialog();
+                }
+            });
+
     }
 
     @Override
@@ -123,6 +132,11 @@ public class MainActivity extends AppCompatActivity {
             if (mAuthStateListener != null) {
                 mFirebaseAuth.removeAuthStateListener(mAuthStateListener);
             }
+        }
+
+        public void openDialog(){
+         RecoverPassDialog passDialog = new RecoverPassDialog();
+         passDialog.show(getSupportFragmentManager(),"dialog");
         }
 
 }

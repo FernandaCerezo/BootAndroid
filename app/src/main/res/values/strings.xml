@@ -20,10 +20,5 @@
 
 
 
-    <string name="info_textview">
-        <br>
-        Equipo Android\n\n</br>
-        <br>
-        Arkusnexus</br>
-    </string>
+    <string name="info_textview">Proporcione el correo electrónico de su cuenta en esta aplicación</string>
 </resources>

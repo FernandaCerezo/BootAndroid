@@ -33,7 +33,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     FirebaseAuth mFirebaseAuth;
     FirebaseDatabase mFirebaseDatabase;
 
-    String[] listItems={"Tijuana","Monterrey"};
+    String[] listItems={"Tijuana"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
