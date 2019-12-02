@@ -56,13 +56,6 @@ public class UserProfile extends AppCompatActivity {
         getUserData();
     }
 
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        startActivity(new Intent(UserProfile.this, Home.class));
-    }
-
     public void getUserData() {
         databaseReference.child(Id).addValueEventListener(new ValueEventListener() {
             @Override

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Users extends ArrayList<Users> {
     public String name, technology, image;
-    private String rol, technologyEsp, grade, account, startDate, endDate;
+    private String rol, technologyp, grade, account, startDate, endDate;
 
     public Users() {
         super();
@@ -16,7 +16,7 @@ public class Users extends ArrayList<Users> {
         this.technology = technology;
         this.image = image;
         this.rol = rol;
-        this.technologyEsp = technologyEsp;
+        this.technologyp = technologyp;
         this.grade = grade;
         this.account = account;
         this.startDate = startDate;
@@ -55,12 +55,12 @@ public class Users extends ArrayList<Users> {
         this.rol = rol;
     }
 
-    public String getTechnologyEsp() {
-        return technologyEsp;
+    public String getTechnologyp() {
+        return technologyp;
     }
 
-    public void setTechnologyEsp(String technologyEsp) {
-        this.technologyEsp = technologyEsp;
+    public void setTechnologyp(String technologyEsp) {
+        this.technologyp = technologyp;
     }
 
     public String getGrade() {
