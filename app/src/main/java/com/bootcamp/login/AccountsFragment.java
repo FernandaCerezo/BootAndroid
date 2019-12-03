@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bootcamp.login.Accounts.Accounts;
 import com.bootcamp.login.Accounts.AdapterAccounts;
+import com.bootcamp.login.Accounts.SAccounts;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,7 +44,7 @@ public class AccountsFragment extends Fragment {
         View viewAccounts;
         viewAccounts = inflater.inflate(R.layout.fragment_accounts, container, false);
         AccountsList = new ArrayList<>();
-        AccountsRecycler = viewAccounts.findViewById(R.id.Accounts_RecyclerView);
+        AccountsRecycler = viewAccounts.findViewById(R.id.AccountRecyclerView);
         AccountsRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
 
         //Crear barra de busqueda y metodo por cada cambio
@@ -74,15 +75,16 @@ public class AccountsFragment extends Fragment {
 
                 //Limpieza
                 AccountsList.clear();
-                Accounts account;
+                SAccounts account;
                 //Si esta vacio
                 if (search.equals("")) {
 
                     //Por cada objeto
                     for (DataSnapshot objSnapShop :dataSnapshot.getChildren()) {
-                        account = objSnapShop.getValue(Accounts.class);
+                        account = objSnapShop.getValue(SAccounts.class);
                         Objects.requireNonNull(account).setName(objSnapShop.getKey());
-                        AccountsList.add(account);
+                        AccountsList.add(new Accounts(Objects.requireNonNull(account).getName(),
+                                account.getDescription(),account.getTechnology(), R.drawable.arkus));
                     }
                     SetCustomAdapter();
                     return;
@@ -90,10 +92,11 @@ public class AccountsFragment extends Fragment {
 
                 //Si no esta vacio
                 for (DataSnapshot objSnapShop :dataSnapshot.getChildren()) {
-                    account = objSnapShop.getValue(Accounts.class);
+                    account = objSnapShop.getValue(SAccounts.class);
                     Objects.requireNonNull(account).setName(objSnapShop.getKey());
                     if (Objects.requireNonNull(account).getName().toLowerCase().contains(search.toLowerCase())) {
-                        AccountsList.add(account);
+                        AccountsList.add(new Accounts(Objects.requireNonNull(account).getName(),
+                                account.getDescription(),account.getTechnology(), R.drawable.arkus));
                     }
                 }
                 SetCustomAdapter();

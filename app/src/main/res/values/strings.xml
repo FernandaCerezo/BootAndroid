@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Login</string>
+    <string name="app_name">Ark</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -18,10 +18,7 @@
     <string name="menu_info">Acerca de</string>
     <string name="menu_send">Send</string>
 
-    <string name="info_textview">
-        <br>
-        Equipo Android\n\n</br>
-        <br>
-        Arkusnexus</br>
-    </string>
+
+
+    <string name="info_textview">Proporcione el correo electrónico de su cuenta en esta aplicación</string>
 </resources>

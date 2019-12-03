@@ -14,31 +14,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@color/Head">
+            android:background="@color/colorPrimaryDark">
 
             <LinearLayout
+                android:id="@+id/layout4"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:background="@color/Base"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginBottom="15dp">
-
-                <ImageView
-                    android:id="@+id/Filter_Search"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_margin="10dp"
-                    android:src="@drawable/glass"
-                    android:contentDescription="@string/Search"/>
+                android:layout_height="52dp"
+                android:layout_below="@+id/layout3"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginBottom="16dp"
+                android:paddingTop="8dp"
+                android:orientation="horizontal">
 
                 <EditText
                     android:id="@+id/search_section"
                     android:layout_width="match_parent"
+                    android:background="@drawable/search_style"
                     android:layout_height="wrap_content"
                     android:text=""
+                    android:drawableLeft="@drawable/ic_search_black_24dp"
                     android:textSize="20sp"/>
 
             </LinearLayout>
@@ -53,9 +47,9 @@
 
             <!-- ListView de todas las cuentas encontradas -->
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/Accounts_RecyclerView"
+                android:id="@+id/AccountRecyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent" />
 
         </LinearLayout>
 

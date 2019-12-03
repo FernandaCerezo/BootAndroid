@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,7 +20,7 @@ import java.util.ArrayList;
 public class AdapterAccounts extends RecyclerView.Adapter<AdapterAccounts.ViewHolderAccounts>
 {
     private ArrayList<Accounts> AccountsList;
-    private Context context;
+    Context context;
 
     public AdapterAccounts(ArrayList<Accounts> AccountsList, Context context) {
         this.AccountsList = AccountsList;
@@ -36,6 +37,7 @@ public class AdapterAccounts extends RecyclerView.Adapter<AdapterAccounts.ViewHo
     public void onBindViewHolder(@NonNull ViewHolderAccounts holder, int position) {
         holder.account_name.setText(AccountsList.get(position).getName());
         holder.account_description.setText(AccountsList.get(position).getDescription());
+        holder.account_image.setImageResource(AccountsList.get(position).getImage());
 
         holder.setItemClickListener(new ItemClick() {
             @Override
@@ -61,12 +63,14 @@ public class AdapterAccounts extends RecyclerView.Adapter<AdapterAccounts.ViewHo
 
     public class ViewHolderAccounts extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView account_name, account_description;
+        ImageView account_image;
         ItemClick mItemClickListener;
 
         public ViewHolderAccounts(@NonNull View itemView) {
             super(itemView);
-            account_name = itemView.findViewById(R.id.account_name);
-            account_description = itemView.findViewById(R.id.account_description);
+            account_name = (TextView) itemView.findViewById(R.id.account_name);
+            account_description = (TextView) itemView.findViewById(R.id.account_description);
+            account_image = (ImageView) itemView.findViewById(R.id.account_image);
 
             itemView.setOnClickListener(this);
         }
