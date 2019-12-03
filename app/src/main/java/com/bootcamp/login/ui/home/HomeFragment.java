@@ -39,11 +39,16 @@ public class HomeFragment extends Fragment {
         mRecycleTech=root.findViewById(R.id.tech_recycle);
         mRecycleSrc=root.findViewById(R.id.src_dip);
         mRecycleTech.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
+        try {
         Name=new String[]{"FrontEnd","BackEnd","Movil"};
         Size = new ArrayList<String>();
         for (String tech : Name)
         {
             getUsers(tech);
+        }
+        }
+        catch (Exception e) {
+            getUsers(null);
         }
 
         return root;
