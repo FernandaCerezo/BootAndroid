@@ -44,7 +44,7 @@ public class UsersFragment extends Fragment {
     ProgressDialog progress;
     Button button1, button2, button3,button4;
     String [] opc1 = {"Senior", "Mid", "Junior"};
-    String [] opc2 = {"Android", ".Net", "PHP", "React-native", "IOS"};
+    String [] opc2 = {"FrontEnd", "BackEnd", "Movil"};
     String [] opc3 = {"PO", "Scrum Master", "Desarrollador", "QA"};
     String [] opc4 = {"Disponibles", "Ocupados"};
 
@@ -103,7 +103,7 @@ public class UsersFragment extends Fragment {
 
                         switch (selectedText) {
                             case "Senior":
-                                mFirebaseDB.orderByChild("Grade").equalTo("Sr").addValueEventListener(new ValueEventListener() {
+                                mFirebaseDB.orderByChild("Grade").equalTo("Senior").addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                         users.clear();
@@ -157,7 +157,7 @@ public class UsersFragment extends Fragment {
                                 break;
 
                             case "Junior":
-                                mFirebaseDB.orderByChild("Grade").equalTo("Jr").addValueEventListener(new ValueEventListener() {
+                                mFirebaseDB.orderByChild("Grade").equalTo("Junior").addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                         users.clear();
@@ -207,8 +207,8 @@ public class UsersFragment extends Fragment {
                         String selectedText = Arrays.asList(opc2).get(which);
 
                         switch (selectedText) {
-                            case "Android":
-                                mFirebaseDB.orderByChild("technology").equalTo("Android").addValueEventListener(new ValueEventListener() {
+                            case "FrontEnd":
+                                mFirebaseDB.orderByChild("technologyp").equalTo("FrontEnd").addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                         users.clear();
@@ -233,8 +233,8 @@ public class UsersFragment extends Fragment {
                                     }
                                 });
                                 break;
-                            case ".Net":
-                                mFirebaseDB.orderByChild("technology").equalTo(".NET").addValueEventListener(new ValueEventListener() {
+                            case "BackEnd":
+                                mFirebaseDB.orderByChild("technologyp").equalTo("BackEnd").addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                         users.clear();
@@ -259,59 +259,8 @@ public class UsersFragment extends Fragment {
                                     }
                                 });
                                 break;
-                            case "PHP":
-                                mFirebaseDB.orderByChild("technology").equalTo("PHP").addValueEventListener(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                        users.clear();
-                                        ArrayList<String> keys = new ArrayList<>();
-
-                                        for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren())
-                                        {
-                                            keys.add(dataSnapshot1.getKey());
-                                            Users u = dataSnapshot1.getValue(Users.class);
-                                            users.add(u);
-                                        }
-                                        mAdapterU=new AdapterUsers(getContext(),users, keys);
-                                        mRecycleV.setAdapter(mAdapterU);
-                                        //cerrar carga
-                                        progress.dismiss();
-                                        return;
-                                    }
-
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                                    }
-                                });
-                                break;
-                            case "IOS":
-                                mFirebaseDB.orderByChild("technology").equalTo("IOS").addValueEventListener(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                        users.clear();
-                                        ArrayList<String> keys = new ArrayList<>();
-
-                                        for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                                            keys.add(dataSnapshot1.getKey());
-                                            Users u = dataSnapshot1.getValue(Users.class);
-                                            users.add(u);
-                                        }
-                                        mAdapterU = new AdapterUsers(getContext(), users, keys);
-                                        mRecycleV.setAdapter(mAdapterU);
-                                        //cerrar carga
-                                        progress.dismiss();
-                                        return;
-                                    }
-
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                                    }
-                                });
-                                break;
-                            case "React-native":
-                                mFirebaseDB.orderByChild("technology").equalTo("React").addValueEventListener(new ValueEventListener() {
+                            case "Movil":
+                                mFirebaseDB.orderByChild("technologyp").equalTo("Movil").addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                         users.clear();
