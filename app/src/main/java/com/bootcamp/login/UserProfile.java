@@ -13,10 +13,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Calendar;
 import java.util.List;
 
 public class UserProfile extends AppCompatActivity {
-    TextView mStartDate, mAccount, mEndDate, mName, mRol, mTechnology, mEspTechnology, mGrade;
+    TextView mStartDate, mAccount, mEndDate, mName, mRol, mTechnology, mEspTechnology, mGrade, mStatus;
     String mTitle, UserName, Rol, Technology, EspTechnology, Id;
     String Accounts, StartDate, EndDate, Grade;
     DatabaseReference databaseReference;
@@ -35,6 +36,7 @@ public class UserProfile extends AppCompatActivity {
         mGrade=findViewById(R.id.txtGrade);
         mTechnology=findViewById(R.id.txtTech);
         mEspTechnology=findViewById(R.id.txtEspecTech);
+        mStatus = findViewById(R.id.txtStatus);
 
         mAccount=findViewById(R.id.txtAccountName);
         mStartDate=findViewById(R.id.txtStartDate);
@@ -52,8 +54,36 @@ public class UserProfile extends AppCompatActivity {
         //mImageView.setImageBitmap(bitmap);
         mName.setText(UserName);
         mEspTechnology.setText(mTitle);
+
         databaseReference=FirebaseDatabase.getInstance().getReference("user");
         getUserData();
+    }
+
+    private String GetStatus(String Date) {
+        Calendar calendar = Calendar.getInstance();
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int month = calendar.get(Calendar.MONTH);
+        int year = calendar.get(Calendar.YEAR);
+        int Aday = Integer.parseInt(Date.substring(0,2));
+        int Amonth = Integer.parseInt(Date.substring(3,5));
+        int Ayear = Integer.parseInt(Date.substring(6,10));
+
+
+        if (year > Ayear)
+        {
+            return "Disponible";
+        }
+
+        if (month > Amonth)
+        {
+            return "Disponible";
+        }
+
+        if (day > Aday)
+        {
+            return "Disponible";
+        }
+        return "Ocupado";
     }
 
     public void getUserData() {
@@ -75,6 +105,7 @@ public class UserProfile extends AppCompatActivity {
                 mTechnology.setText("Tipo de Tecnologia: " + Technology);
                 mEspTechnology.setText("Tecnologia: " + EspTechnology);
                 mGrade.setText("Grado: " + Grade);
+                mStatus.setText("Estatus: " + GetStatus(EndDate));
             }
 
             @Override
