@@ -8,7 +8,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="@color/Line"
-        android:padding="5dp">
+        android:padding="2dp">
 
         <TextView
             android:id="@+id/tech_name"
@@ -16,18 +16,18 @@
             android:layout_height="wrap_content"
             android:text="Android"
             android:textStyle="bold"
-            android:textSize="30dp"
+            android:textSize="24dp"
             android:textColor="@color/Head"
             android:background="@color/Base"/>
 
         <TextView
             android:id="@+id/tech_percent"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="33%"
             android:textStyle="bold"
             android:textAlignment="center"
-            android:textSize="30dp"
+            android:textSize="24dp"
             android:textColor="@color/Base"
             android:background="@color/Head"/>
 
