@@ -6,6 +6,6 @@
     <color name="txtColor">#000</color>
     <color name="subtxtColor">#a9a9a9</color>
     <color name="Base">#F9F9F9</color>
-    <color name="Line">#B2B1B1</color>
-    <color name="dashcard">#EFECEC</color>
+    <color name="Line">#EFECEC</color>
+    <color name="dashcard">#F9F9F9</color>
 </resources>

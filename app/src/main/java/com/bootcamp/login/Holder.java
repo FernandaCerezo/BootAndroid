@@ -19,7 +19,6 @@ public class Holder extends RecyclerView.ViewHolder implements View.OnClickListe
         this.mTechnology=itemView.findViewById(R.id.txtEspecTech);
         this.mTechnologyP=itemView.findViewById(R.id.txtTech);
         this.mAccount=itemView.findViewById(R.id.txtAccountName);
-        this.mStart=itemView.findViewById(R.id.txtStartDate);
         this.mEnd=itemView.findViewById(R.id.txtEndDate);
         this.mGrade=itemView.findViewById(R.id.txtGrade);
 

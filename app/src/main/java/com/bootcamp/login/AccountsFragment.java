@@ -84,7 +84,7 @@ public class AccountsFragment extends Fragment {
                         account = objSnapShop.getValue(SAccounts.class);
                         Objects.requireNonNull(account).setName(objSnapShop.getKey());
                         AccountsList.add(new Accounts(Objects.requireNonNull(account).getName(),
-                                account.getDescription(),account.getTechnology(), R.drawable.arkus));
+                                account.getDescription(),account.getTechnology(), R.drawable.logo_arkus));
                     }
                     SetCustomAdapter();
                     return;
@@ -96,7 +96,7 @@ public class AccountsFragment extends Fragment {
                     Objects.requireNonNull(account).setName(objSnapShop.getKey());
                     if (Objects.requireNonNull(account).getName().toLowerCase().contains(search.toLowerCase())) {
                         AccountsList.add(new Accounts(Objects.requireNonNull(account).getName(),
-                                account.getDescription(),account.getTechnology(), R.drawable.arkus));
+                                account.getDescription(),account.getTechnology(), R.drawable.logo_arkus));
                     }
                 }
                 SetCustomAdapter();

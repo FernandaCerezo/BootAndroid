@@ -39,7 +39,6 @@ public class UserProfile extends AppCompatActivity {
         mStatus = findViewById(R.id.txtStatus);
 
         mAccount=findViewById(R.id.txtAccountName);
-        mStartDate=findViewById(R.id.txtStartDate);
         mEndDate=findViewById(R.id.txtEndDate);
 
         Intent intent=getIntent();
@@ -86,19 +85,18 @@ public class UserProfile extends AppCompatActivity {
         return "Ocupado";
     }
 
+
     public void getUserData() {
         databaseReference.child(Id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Rol = dataSnapshot.child("Rol").getValue().toString();
                 Technology = dataSnapshot.child("technology").getValue().toString();
-                StartDate = dataSnapshot.child("start").getValue().toString();
                 EndDate = dataSnapshot.child("end").getValue().toString();
                 Accounts = dataSnapshot.child("Account").getValue().toString();
                 EspTechnology = dataSnapshot.child("technologyp").getValue().toString();
                 Grade = dataSnapshot.child("Grade").getValue().toString();
 
-                mStartDate.setText("Fecha de Inicio: "+StartDate);
                 mEndDate.setText("Fecha de Terminación: " + EndDate);
                 mRol.setText("Rol: " + Rol);
                 mAccount.setText("Cuenta: " + Accounts);

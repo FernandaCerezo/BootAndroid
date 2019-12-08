@@ -44,7 +44,7 @@ public class UsersFragment extends Fragment {
     ProgressDialog progress;
     Button button1, button2, button3,button4;
     String [] opc1 = {"Senior", "Mid", "Junior"};
-    String [] opc2 = {"FrontEnd", "BackEnd", "Movil"};
+    String [] opc2 = {"BackEnd", "FrontEnd", "Mobile"};
     String [] opc3 = {"PO", "Scrum Master", "Desarrollador", "QA"};
     String [] opc4 = {"Disponibles", "Ocupados"};
 
@@ -259,8 +259,8 @@ public class UsersFragment extends Fragment {
                                     }
                                 });
                                 break;
-                            case "Movil":
-                                mFirebaseDB.orderByChild("technologyp").equalTo("Movil").addValueEventListener(new ValueEventListener() {
+                            case "Mobile":
+                                mFirebaseDB.orderByChild("technologyp").equalTo("Mobile").addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                         users.clear();
@@ -461,6 +461,7 @@ public class UsersFragment extends Fragment {
                                         users.add(u);
                                     }
                                 }
+
                                 mAdapterU=new AdapterUsers(getContext(),users, keys);
                                 mRecycleV.setAdapter(mAdapterU);
                                 //cerrar carga

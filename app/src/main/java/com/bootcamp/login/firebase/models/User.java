@@ -9,7 +9,7 @@ public class User {
     private String Name;
     private String Email;
     private String Account;
-    private String Technologyp;
+    private String Technologyp,end;
 
     public User(){
         // Default constructor required
@@ -45,5 +45,13 @@ public class User {
 
     public void setTechnologyp(String technologyp) {
         Technologyp = technologyp;
+    }
+
+    public String getEnd() {
+        return end;
+    }
+
+    public void setEnd(String end) {
+        this.end = end;
     }
 }

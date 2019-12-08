@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/Line"
     tools:context=".UserProfile">
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -31,7 +32,8 @@
             <LinearLayout
                 android:id="@+id/layout2"
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_19sdp"
                 android:background="@color/colorPrimaryDark"
                 android:orientation="vertical">
 
@@ -51,6 +53,7 @@
 
             <LinearLayout
                 android:id="@+id/info"
+                android:elevation="2dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
@@ -136,6 +139,7 @@
                 android:textStyle="bold"/>
 
             <LinearLayout
+                android:elevation="2dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/accountinfo"
@@ -146,18 +150,6 @@
 
                 <TextView
                     android:id="@+id/txtAccountName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginLeft="@dimen/_19sdp"
-                    android:layout_marginRight="@dimen/_19sdp"
-                    android:fontFamily="@font/montserrat"
-                    android:text="TextView"
-                    android:textColor="#000011"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/txtStartDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"

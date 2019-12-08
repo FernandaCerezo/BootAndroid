@@ -4,11 +4,51 @@
     android:layout_height="match_parent"
     android:background="@android:color/darker_gray">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:gravity="center"
+        android:id="@+id/layoutvc"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Vacantes"
-        android:textSize="30sp"
-        android:layout_centerInParent="true"/>
+        android:padding="@dimen/_19sdp"
+        android:background="@color/colorPrimaryDark">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnFrontend"
+            android:background="@drawable/custom_button"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:text="FRONTEND"
+            android:clickable="true"
+            android:padding="@dimen/_19sdp"/>
+
+        <Button
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnBackend"
+            android:text="BACKEND"
+            android:clickable="true"
+            android:background="@drawable/custom_button"
+            android:padding="@dimen/_19sdp" />
+
+        <Button
+            android:background="@drawable/custom_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnmovil"
+            android:text="MOBILE"
+            android:clickable="true"
+            android:padding="@dimen/_19sdp"/>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RecyclerVacancies"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/layoutvc"
+        android:background="@color/dashcard"
+        />
+
 
 </RelativeLayout>

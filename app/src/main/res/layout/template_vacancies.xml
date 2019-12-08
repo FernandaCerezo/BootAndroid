@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".ModelUsers$Profile"
-    android:clickable="true"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="3dp"
     app:cardElevation="3dp"
-
-    app:cardUseCompatPadding="true">
+    app:cardUseCompatPadding="true"
+    >
 
     <!-- TODO: Update blank fragment layout -->
     <RelativeLayout
@@ -18,41 +15,54 @@
         android:padding="16dp">
 
         <ImageView
-            android:id="@+id/imageUser"
+            android:id="@+id/imageUserVacancy"
             android:layout_width="75dp"
             android:layout_height="75dp"
             />
 
         <TextView
-            android:id="@+id/Textname"
+            android:id="@+id/nametech"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
-            android:layout_toEndOf="@id/imageUser"
-            android:layout_toRightOf="@id/imageUser"
+            android:layout_toEndOf="@id/imageUserVacancy"
+            android:layout_toRightOf="@id/imageUserVacancy"
             android:fontFamily="@font/lato"
-            android:text="Nombre"
+            android:text="Technology"
             android:textColor="#000"
             android:textSize="22sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/txtEspecTech"
+            android:id="@+id/seniority"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/Textname"
+            android:layout_below="@id/nametech"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:layout_toEndOf="@id/imageUser"
-            android:layout_toRightOf="@id/imageUser"
+            android:layout_toEndOf="@id/imageUserVacancy"
+            android:layout_toRightOf="@id/imageUserVacancy"
             android:fontFamily="@font/lato"
-            android:text="Descripcion"
+            android:text="Seniority"
             android:textColor="#a9a9a9"
             android:textSize="18sp" />
 
-
+        <TextView
+            android:id="@+id/grade_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/seniority"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@id/imageUserVacancy"
+            android:layout_toRightOf="@id/imageUserVacancy"
+            android:fontFamily="@font/lato"
+            android:text="Grade"
+            android:textColor="#a9a9a9"
+            android:textSize="18sp" />
 
     </RelativeLayout>
 

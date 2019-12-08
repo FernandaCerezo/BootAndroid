@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="*">
+
+    <TableRow
+        android:id="@+id/firstRow"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+    <!-- first element of the first row-->
+        <TextView
+            android:id="@+id/tech_name"
+            android:layout_marginLeft="@dimen/_19sdp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/Base"
+            android:fontFamily="@font/montserrat"
+            android:text="Android"
+            android:textColor="@color/Head"
+            android:textSize="24dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tech_percent"
+            android:layout_width="wrap_content"
+            android:elevation="3dp"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/tech_name"
+            android:background="@drawable/percent_style"
+            android:fontFamily="@font/montserrat"
+            android:text="33%"
+            android:textAlignment="center"
+            android:textColor="@color/Base"
+            android:textSize="24dp"
+            android:layout_margin="2dp"
+            android:textStyle="bold" />
+    </TableRow>
+</TableLayout>

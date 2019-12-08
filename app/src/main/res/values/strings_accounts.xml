@@ -3,8 +3,8 @@
     <string name="Counts">Cuentas</string>
     <string name="Search">Buscar</string>
     <string name="GoTo">Ir a perfil de la cuenta</string>
-    <string name="Profile_Info">Información de cuenta</string>
-    <string name="Profile_Users">Usuarios de cuenta</string>
+    <string name="Profile_Info">Información general</string>
+    <string name="Profile_Users">Usuarios de la cuenta</string>
     <string name="Description">Descripción:</string>
     <string name="Technology">Tecnologías:</string>
 </resources>
