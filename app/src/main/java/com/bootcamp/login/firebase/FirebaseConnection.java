@@ -12,6 +12,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -56,4 +57,61 @@ public class FirebaseConnection {
         getDatabaseReference(USERS_REF_DATABASE).addValueEventListener(valueEventListener);
     }
 
+    public static void getAvailable(final String end, final CallbackUsersDelegate delegate){
+        String  Status = "Disponible";
+        final String finalStatus = Status;
+        ValueEventListener valueEventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                try {
+                    List<User> listUsers = new ArrayList<>();
+                    for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren())
+                    {
+                        User u = dataSnapshot1.getValue(User.class);
+                        if (GetStatus(dataSnapshot1.child("end").getValue().toString()).equals(finalStatus))
+                        {
+                            listUsers.add(u);
+                        }
+                    }
+                    delegate.onDataChange(listUsers);
+
+                }catch (Exception e){
+                    delegate.onDataChange(null);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                delegate.onCancelled(databaseError);
+            }
+        };
+
+        getDatabaseReference(USERS_REF_DATABASE).addValueEventListener(valueEventListener);
+    }
+    public static String GetStatus(String Date) {
+        Calendar calendar = Calendar.getInstance();
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int month = calendar.get(Calendar.MONTH);
+        int year = calendar.get(Calendar.YEAR);
+        int Aday = Integer.parseInt(Date.substring(0,2));
+        int Amonth = Integer.parseInt(Date.substring(3,5));
+        int Ayear = Integer.parseInt(Date.substring(6,10));
+
+
+        if (year > Ayear)
+        {
+            return "Disponible";
+        }
+
+        if (month > Amonth)
+        {
+            return "Disponible";
+        }
+
+        if (day > Aday)
+        {
+            return "Disponible";
+        }
+        return "Ocupado";
+    }
 }

@@ -16,13 +16,11 @@ import java.util.ArrayList;
 public class HorizontalAdapter extends RecyclerView.Adapter<HorizontalAdapter.HorizontalViewHolder>{
 
     private String[] items;
-    //private String[] prices;
     private Drawable[] drawables;
     private ArrayList<String> sizes;
 
-    public HorizontalAdapter(String[] items, Drawable[] drawables, ArrayList<String> sizes) {
+    public HorizontalAdapter(String[] items, Drawable[] drawables, ArrayList<String> sizes ) {
         this.items = items;
-        //this.prices = prices;
         this.drawables = drawables;
         this.sizes = sizes;
     }

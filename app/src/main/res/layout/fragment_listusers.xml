@@ -42,8 +42,9 @@
             <!-- Layout menu de Nivel, Tecnologias, rol, -->
             <LinearLayout
                 android:id="@+id/layout5"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="65dp"
+                android:gravity="center"
                 android:orientation="horizontal"
                 android:layout_below="@+id/layout4"
                 android:paddingTop="8dp">
@@ -58,12 +59,14 @@
                     android:layout_marginHorizontal="6dp"
                     android:background="@drawable/custom_button"
                     android:fontFamily="@font/lato"
+                    android:textSize="10dp"
                     android:text="Nivel" />
                 <Button
                     android:id="@+id/button2"
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
                     android:clickable="true"
+                    android:textSize="10dp"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:background="@drawable/custom_button"
@@ -80,11 +83,13 @@
                     android:layout_marginHorizontal="8dp"
                     android:background="@drawable/custom_button"
                     android:fontFamily="@font/lato"
+                    android:textSize="10dp"
                     android:text="Rol" />
 
                 <Button
                     android:clickable="true"
                     android:id="@+id/button4"
+                    android:textSize="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
                     android:layout_centerHorizontal="true"

@@ -19,7 +19,7 @@
             android:background="@drawable/custom_button"
             android:layout_marginRight="@dimen/_10sdp"
             android:text="FRONTEND"
-            android:padding="@dimen/_19sdp"/>
+            android:textSize="10dp"/>
 
         <Button
             android:layout_marginRight="@dimen/_10sdp"
@@ -29,7 +29,7 @@
             android:clickable="true"
             android:text="BACKEND"
             android:background="@drawable/custom_button"
-            android:padding="@dimen/_19sdp" />
+            android:textSize="10dp" />
 
         <Button
             android:background="@drawable/custom_button"
@@ -38,7 +38,7 @@
             android:id="@+id/btnmovilT"
             android:clickable="true"
             android:text="MOBILE"
-            android:padding="@dimen/_19sdp"/>
+            android:textSize="10dp"/>
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

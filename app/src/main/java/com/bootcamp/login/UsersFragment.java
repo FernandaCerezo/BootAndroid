@@ -51,8 +51,6 @@ public class UsersFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        progress = ProgressDialog.show(getContext(), "Cargando",
-                "Espere un momento", true);
         readUserData(search);
 
     }
@@ -95,11 +93,12 @@ public class UsersFragment extends Fragment {
 
 
                 alertdialogbuilder.setTitle("Nivel");
-
                 alertdialogbuilder.setItems(opc1, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String selectedText = Arrays.asList(opc1).get(which);
+                        progress = ProgressDialog.show(getContext(), "Cargando",
+                                "Espere un momento", true);
 
                         switch (selectedText) {
                             case "Senior":
@@ -205,6 +204,8 @@ public class UsersFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String selectedText = Arrays.asList(opc2).get(which);
+                        progress = ProgressDialog.show(getContext(), "Cargando",
+                                "Espere un momento", true);
 
                         switch (selectedText) {
                             case "FrontEnd":
@@ -308,6 +309,8 @@ public class UsersFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String selectedText = Arrays.asList(opc3).get(which);
+                        progress = ProgressDialog.show(getContext(), "Cargando",
+                                "Espere un momento", true);
 
                         switch (selectedText) {
                             case "PO":
@@ -430,12 +433,15 @@ public class UsersFragment extends Fragment {
 
                 AlertDialog.Builder alertdialogbuilder = new AlertDialog.Builder(getContext());
 
-                alertdialogbuilder.setTitle("Estatus");
+                alertdialogbuilder.setTitle("Estado");
 
                 alertdialogbuilder.setItems(opc4, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String selectedText = Arrays.asList(opc4).get(which);
+                        progress = ProgressDialog.show(getContext(), "Cargando",
+                                "Espere un momento", true);
+
                         String Status = "Ocupado";
 
                         if(selectedText.equals("Disponibles"))
@@ -446,7 +452,7 @@ public class UsersFragment extends Fragment {
 
                         final String finalStatus = Status;
 
-                        mFirebaseDB.orderByChild("end").addValueEventListener(new ValueEventListener() {
+                        mFirebaseDB.orderByChild("name").addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 users.clear();
@@ -501,8 +507,6 @@ public class UsersFragment extends Fragment {
                     }
                     mAdapterU=new AdapterUsers(getContext(),users, keys);
                     mRecycleV.setAdapter(mAdapterU);
-                    //cerrar carga
-                    progress.dismiss();
                     return;
                 }
 

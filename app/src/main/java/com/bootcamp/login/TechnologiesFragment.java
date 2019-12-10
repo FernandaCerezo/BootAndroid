@@ -172,4 +172,9 @@ public class TechnologiesFragment extends Fragment {
 
         return root;
     }
+    @Override
+    public void onResume(){
+        super.onResume();
+        ((Home) getActivity()).setActionBarTitle("Tecnologias");
+    }
 }

@@ -162,4 +162,9 @@ public class VacanciesFragment extends Fragment {
 
         return root;
     }
+    @Override
+    public void onResume(){
+        super.onResume();
+        ((Home) getActivity()).setActionBarTitle("Vacantes");
+    }
 }

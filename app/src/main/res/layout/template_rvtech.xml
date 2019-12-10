@@ -5,6 +5,7 @@
     android:padding="2dp"
     android:background="@drawable/design_tech"
     android:layout_margin="4dp"
+    android:elevation="2dp"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
     <androidx.cardview.widget.CardView
@@ -20,7 +21,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#EFECEC"
-            android:divider="@android:color/transparent"
             android:gravity="center">
 
             <View
@@ -28,15 +28,16 @@
                 android:layout_width="110dp"
                 android:layout_height="110dp"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="33dp"
+                android:layout_marginTop="@dimen/_19sdp"
                 android:background="@drawable/logo_arkus" />
 
             <TextView
                 android:id="@+id/tech_name"
                 android:layout_width="79dp"
                 android:layout_height="22dp"
-                android:layout_marginStart="65dp"
-                android:layout_marginLeft="65dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="22dp"
+                android:layout_marginLeft="22dp"
                 android:layout_marginTop="@dimen/_19sdp"
                 android:layout_marginBottom="@dimen/_19sdp"
                 android:layout_toEndOf="@id/tech_photo"
@@ -59,30 +60,6 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="@dimen/_textdp"
                 android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tech_number4"
-                android:layout_width="20dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tech_name"
-                android:layout_marginStart="@android:dimen/notification_large_icon_height"
-                android:layout_marginLeft="148dp"
-                android:layout_toEndOf="@+id/tech_number"
-                android:layout_toRightOf="@id/tech_photo"
-                android:text="0"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textSize="@dimen/_textdp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tech_number4"
-                android:layout_marginStart="@dimen/_35sdp"
-                android:layout_marginTop="1dp"
-                android:layout_toEndOf="@+id/textView5"
-                android:text="Disponibles" />
 
             <TextView
                 android:id="@+id/textView5"

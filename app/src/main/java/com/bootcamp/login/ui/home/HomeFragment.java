@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
@@ -37,9 +38,9 @@ public class HomeFragment extends Fragment {
     private ArrayList<String> Technologies;
     private ArrayList<Integer> Tech_Count;
     ArrayList<String> Size;
-    ArrayList<String> Dispo;
     String [] Name;
-    String [] Disp;
+    TextView mAvailable;
+    int totalav;
 
     @Nullable
     @Override
@@ -48,18 +49,21 @@ public class HomeFragment extends Fragment {
         mRecycleTech=root.findViewById(R.id.tech_recycle);
         mRecycleSrc=root.findViewById(R.id.src_dip);
         mRecycleTech.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
+        mAvailable = root.findViewById(R.id.av_number);
         Name=new String[]{"FrontEnd","BackEnd","Mobile"};
-        Disp=new String[]{"Disponible"};
-        Dispo=new ArrayList<String>();
         Size = new ArrayList<String>();
         for (String tech : Name)
         {
             getUsers(tech);
         }
+        getAvailable("Disponible");
+
         Technologies = new ArrayList<>();
         Tech_Count = new ArrayList<>();
         mRecycleSrc.setLayoutManager(new LinearLayoutManager(getContext()));
         GetPercents();
+
+
         return root;
     }
     @Override
@@ -78,7 +82,7 @@ public class HomeFragment extends Fragment {
                 Utils.Debug(MainActivity.class, usersResponse.get(0).getName());
                 int total = usersResponse.size();
                 Size.add(Integer.toString(total));
-                mRecycleTech.setAdapter(new HorizontalAdapter(Name,null, Size));
+                mRecycleTech.setAdapter(new HorizontalAdapter(Name, null,Size));
             }
 
             @Override
@@ -88,8 +92,8 @@ public class HomeFragment extends Fragment {
         });
     }
 
-   /* private void getDispo(String end){
-        FirebaseConnection.getUsers(end, new CallbackUsersDelegate() {
+    private void getAvailable (String end){
+        FirebaseConnection.getAvailable(end, new CallbackUsersDelegate() {
             @Override
             public void onDataChange(List<User> usersResponse) {
                 if(usersResponse == null) return;
@@ -97,9 +101,8 @@ public class HomeFragment extends Fragment {
                 //Only data for example
                 Utils.Debug(FirebaseConnection.class, "TOTAL USERS:" + usersResponse.size());
                 Utils.Debug(MainActivity.class, usersResponse.get(0).getName());
-                int total = usersResponse.size();
-                Dispo.add(Integer.toString(total));
-                mRecycleTech.setAdapter(new HorizontalAdapter(Name,null, Dispo));
+                totalav = usersResponse.size();
+                mAvailable.setText(Integer.toString(totalav));
             }
 
             @Override
@@ -107,7 +110,7 @@ public class HomeFragment extends Fragment {
                 Utils.Debug(MainActivity.class, databaseError.getMessage());
             }
         });
-    }*/
+    }
 
     private void GetPercents()
     {
@@ -151,31 +154,5 @@ public class HomeFragment extends Fragment {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) { }
         });
-    }
-    public String GetStatus(String Date) {
-        Calendar calendar = Calendar.getInstance();
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
-        int month = calendar.get(Calendar.MONTH);
-        int year = calendar.get(Calendar.YEAR);
-        int Aday = Integer.parseInt(Date.substring(0,2));
-        int Amonth = Integer.parseInt(Date.substring(3,5));
-        int Ayear = Integer.parseInt(Date.substring(6,10));
-
-
-        if (year > Ayear)
-        {
-            return "Disponible";
-        }
-
-        if (month > Amonth)
-        {
-            return "Disponible";
-        }
-
-        if (day > Aday)
-        {
-            return "Disponible";
-        }
-        return "Ocupado";
     }
 }
